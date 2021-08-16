@@ -102,7 +102,7 @@
                             <div class="card-body">
                                 <h2 class="card-title">{{p.title}}</h2>
                                 <p class="card-text">{{p.content}}</p>
-                                <a class="btn btn-primary" href="#!">Read more →</a>
+                                <a class="btn btn-primary" href="{{ p.get_absolute_url }}">Read more →</a>
                             </div>
                             <div class="card-footer text-muted">
                                 Posted on {{p.created_at }} by
