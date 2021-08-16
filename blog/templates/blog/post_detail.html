@@ -52,7 +52,7 @@
                 </header>
                 <!-- Preview image figure-->
                 <figure class="mb-4"><img class="img-fluid rounded"
-                                          src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..."/></figure>
+                                          src="{{ post.head_image.url }}" alt="{{post.title}}"/></figure>
                 <!-- Post content-->
                 <section class="mb-5">
                     <p class="fs-5 mb-4">{{post.content}}</p>
@@ -71,8 +71,8 @@
                         <div class="d-flex mb-4">
                             <!-- Parent comment-->
                             <div class="flex-shrink-0"><img class="rounded-circle"
-                                                            src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
-                                                            alt="..."/></div>
+                                                            src=""
+                                                            alt=""/></div>
                             <div class="ms-3">
                                 <div class="fw-bold">Commenter Name</div>
                                 If you're going to lead a space frontier, it has to be government; it'll never be
