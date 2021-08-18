@@ -44,6 +44,9 @@
                 <header class="mb-4">
                     <!-- Post title-->
                     <h1 class="fw-bolder mb-1">{{post.title}}</h1>
+                    {% if post.hook_text %}
+                        <h5 class="text-muted"> {{post.hook_text}} </h5>
+                    {% endif %}
                     <!-- Post meta content-->
                     <div class="text-muted fst-italic mb-2">by 작성자명 쓸 위치</div>
                     <!-- Post categories-->
@@ -51,8 +54,10 @@
                     <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
                 </header>
                 <!-- Preview image figure-->
+                {% if post.head_image %}
                 <figure class="mb-4"><img class="img-fluid rounded"
                                           src="{{ post.head_image.url }}" alt="{{post.title}}"/></figure>
+                {% endif %}
                 <!-- Post content-->
                 <section class="mb-5">
                     <p class="fs-5 mb-4">{{post.content}}</p>
