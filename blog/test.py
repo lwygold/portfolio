@@ -64,16 +64,17 @@ class TestView(TestCase):
         navbar = soup.nav
         # 2.2
         self.assertIn('Blog', navbar.text)
-        self.asserIn('About me', navbar.text)
+        self.assertIn('About me', navbar.text)
 
         # 2.3
-        self.assertIn(post_001.title, soup.title)
+        self.assertIn(post_001.title, soup.title.text)
         # 2.4
         main_area = soup.find('div', id='main-area')
         post_area = main_area.find('div', id='post-area')
+        self.assertIn(post_001.title, post_area.text)
         # 2.5
         # 2.6
-        self.assertIn(post_001.content, post_area.content)
+        self.assertIn(post_001.content, post_area.text)
 
 
 
