@@ -46,6 +46,36 @@ class TestView(TestCase):
         # 3.4 "아직 게시물이 없습니다" 라는 문구가 없어야 한다.
         self.assertNotIn('아직 게시물이 없습니다.', main_area.text)
 
+    def test_post_detail(self):
+        # 1.1 포스트가 하나 있다.
+        post_001 = Post.objects.create(
+            title='첫번째 포스트입니다.',
+            content='Helllo, World. We are the World.',
+        )
+        self.assertEqual(Post.objects.count(),1)
+        # 1.2 그 포스트의 url은 '/blog/1/' 이다.
+        self.assertEqual(post_001.get_absolute_url(), '/blog/1/')
+
+        # 2.1 첫 번째 포스트의 상세 페이지가 온다.
+        response = self.client.get(post_001.get_absolute_url())
+        self.assertEqual(response.status_code, 200)
+        # 2.2 첫 번째 포스트
+        soup = BeautifulSoup(response.content, 'html.parser')
+        navbar = soup.nav
+        # 2.2
+        self.assertIn('Blog', navbar.text)
+        self.asserIn('About me', navbar.text)
+
+        # 2.3
+        self.assertIn(post_001.title, soup.title)
+        # 2.4
+        main_area = soup.find('div', id='main-area')
+        post_area = main_area.find('div', id='post-area')
+        # 2.5
+        # 2.6
+        self.assertIn(post_001.content, post_area.content)
+
+
 
 
 
